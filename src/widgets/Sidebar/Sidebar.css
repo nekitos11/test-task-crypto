@@ -1,0 +1,24 @@
+.sidebar {
+    min-width: 100px;
+    max-width: 300px;
+    width: 20%;
+    color: white;
+    /*padding: 20px;*/
+    padding-top: 53px;
+    /*padding-left: 40px;*/
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+}
+.divider{
+    background: #444C7D;
+    height: 100%;
+    position: absolute;
+    right: 0;
+    width: 20px;
+}
+
+.title {
+    padding-left: 40px;
+}

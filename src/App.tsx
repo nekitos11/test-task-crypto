@@ -1,22 +1,16 @@
 import React from 'react';
 import './App.css';
+import { useQuery } from 'react-query';
+import { Sidebar } from 'widgets/Sidebar';
+import { fetchMostPopular } from './widgets/Sidebar/apiCalls/fetchMostPopular/fetchMostPopular';
+import { ApiItems } from './widgets/Sidebar/apiCalls/fetchMostPopular/types';
 
 function App() {
+  const { data } = useQuery<ApiItems[]>('mostPopular', fetchMostPopular);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Sidebar data={data} />
     </div>
   );
 }

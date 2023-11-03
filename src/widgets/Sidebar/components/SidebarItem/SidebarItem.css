@@ -1,0 +1,21 @@
+.pair {
+    line-height: 28px;
+    font-size: 18px;
+}
+.price {
+    color: #5C628A;
+    font-size: 13px;
+    line-height: 20px;
+}
+
+.sidebarItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 40px;
+}
+
+.checked {
+    background-color: #fff;
+    color: #141D53
+}
