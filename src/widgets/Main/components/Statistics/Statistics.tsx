@@ -1,5 +1,4 @@
 import './Statistics.css';
-import { useEffect } from 'react';
 import { ITimePickerItem } from '../TimePicker/TimePicker';
 import { useQuery } from 'react-query';
 import { ApiItems } from '../../apiCalls/fetchCurrentCoin/types';
@@ -29,23 +28,21 @@ export const Statistics = ({ pair }: StatisticsProps) => {
   const [from, to] = pair?.label?.split(' - ') || [];
   const {
     data: currentPairData,
-    refetch,
-  } = useQuery<ApiItems[]>('currentPair', getFetchCurrentPair(from, to));
-  useEffect(() => {
-    refetch();
-  }, [pair?.label]);
+    isLoading,
+  } = useQuery<ApiItems[]>(['currentPair', pair.label], getFetchCurrentPair(from, to));
 
   return (
     <div className="statistics-wrapper">
       <GradientBlock>
         <div className="statistics">
-          {currentPairData && (
+          {
             <ul className="statistics__list">
               {statisticsItems.map(({ title, key }) => {
                 const value = currentPairData?.DISPLAY?.[from]?.[to]?.[key];
                 return (
                   <li className="statistics__list-item">
                     <StatisticsItem
+                      isLoading={isLoading}
                       title={title}
                       label={value}
                       isPlusDay={key === 'CHANGEPCT24HOUR' ? parseFloat(value) > 0 : undefined}
@@ -54,7 +51,7 @@ export const Statistics = ({ pair }: StatisticsProps) => {
                 );
               })}
             </ul>
-          )}
+          }
         </div>
       </GradientBlock>
     </div>

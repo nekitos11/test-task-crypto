@@ -1,12 +1,14 @@
 import './StatisticsItem.css';
+import { Loader } from '../../../../../components/Loader';
 
 interface StatisticsItemProps {
   title: string;
   label: string;
   isPlusDay?: boolean;
+  isLoading?: boolean;
 }
 
-export const StatisticsItem = ({ title, label, isPlusDay }: StatisticsItemProps) => {
+export const StatisticsItem = ({ title, label, isPlusDay, isLoading }: StatisticsItemProps) => {
   return (
     <div className="statistics-item">
       <div className="statistics-item__title">{title}</div>
@@ -19,7 +21,7 @@ export const StatisticsItem = ({ title, label, isPlusDay }: StatisticsItemProps)
             : ''
         }`}
       >
-        {label}
+          {isLoading ? <div className="statistics-item__loader"><Loader /></div> :label}
       </div>
     </div>
   );

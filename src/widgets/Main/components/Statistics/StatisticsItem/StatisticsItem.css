@@ -13,6 +13,7 @@
     color: rgba(23, 32, 96, 1);
     font-weight: bold;
     font-size: 18px;
+    height: 18px;
 }
 
 .statistics-item__label_plus {
@@ -20,5 +21,12 @@
 }
 .statistics-item__label_minus {
     color: red;
+}
+
+.statistics-item__loader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
 }
 
