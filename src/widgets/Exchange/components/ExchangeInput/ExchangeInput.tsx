@@ -9,9 +9,9 @@ export const ExchangeInput = ({
   icon = Block,
   inputStyle = {},
   name = '',
-  onChange = () => {},
+  onChange = (value: number) => {},
   placeholder = '',
-  value = '',
+  value = 0,
   symbol = '',
   wrapperStyle = {},
 }) => {
@@ -30,16 +30,24 @@ export const ExchangeInput = ({
         className="exchange-input__input"
         ref={inputRef}
         name={name}
-        onChange={onChange}
+        onChange={(e) => onChange(Number(e.target.value))}
         placeholder={placeholder}
         value={value}
         style={inputStyle}
       />
       <div className="exchange-input__sym">{symbol}</div>
       <div className="exchange-input__actions">
-        <Icon icon={Arrow} className="exchange-input__actions-arrow" />
+        <Icon
+          icon={Arrow}
+          className="exchange-input__actions-arrow"
+          onClick={() => onChange(Number(value) + 1)}
+        />
         <div className="exchange-input__actions-divider"></div>
-        <Icon icon={Arrow} className="exchange-input__down-arrow exchange-input__actions-arrow" />
+        <Icon
+          icon={Arrow}
+          className="exchange-input__down-arrow exchange-input__actions-arrow"
+          onClick={() => onChange(Number(value) - 1)}
+        />
       </div>
     </div>
     // </div>

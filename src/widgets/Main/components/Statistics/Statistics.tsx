@@ -27,10 +27,10 @@ const statisticsItems = [
 ];
 export const Statistics = ({ pair }: StatisticsProps) => {
   const [from, to] = pair?.label?.split(' - ') || [];
-  const { data: currentPairData, refetch } = useQuery<ApiItems[]>(
-    'currentPair',
-    getFetchCurrentPair(from, to)
-  );
+  const {
+    data: currentPairData,
+    refetch,
+  } = useQuery<ApiItems[]>('currentPair', getFetchCurrentPair(from, to));
   useEffect(() => {
     refetch();
   }, [pair?.label]);
@@ -42,7 +42,7 @@ export const Statistics = ({ pair }: StatisticsProps) => {
           {currentPairData && (
             <ul className="statistics__list">
               {statisticsItems.map(({ title, key }) => {
-                const value = currentPairData[from]?.[to]?.[key];
+                const value = currentPairData?.DISPLAY?.[from]?.[to]?.[key];
                 return (
                   <li className="statistics__list-item">
                     <StatisticsItem
