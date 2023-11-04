@@ -1,6 +1,9 @@
 import './SidebarItem.css';
+import { useContext } from 'react';
+import { CurrentCoinContext } from '../../../../context/CurrentCoin/CurrentCoinContext';
 
 const defaultTsym = 'USD';
+export const defaultTSymId = '171986'
 
 interface SidebarItemProps {
   el: any;
@@ -11,7 +14,7 @@ interface SidebarItemProps {
 export const SidebarItem = ({ el, onClick, isItemChecked }: SidebarItemProps) => {
   return (
     <div className={`sidebarItem${isItemChecked ? ' checked' : ''}`} onClick={onClick}>
-      <div className="main">
+      <div className="sidebarItem__main">
         <div className="pair">
           {el.CoinInfo.Name} - {defaultTsym}
         </div>

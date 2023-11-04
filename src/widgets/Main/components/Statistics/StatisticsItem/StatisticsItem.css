@@ -1,0 +1,24 @@
+.statistics-item {
+    display: flex;
+    flex-direction: column;
+    gap: 5px
+}
+
+.statistics-item__title {
+    color: rgba(117, 117, 121, 0.3);
+    font-weight: bold;
+}
+
+.statistics-item__label {
+    color: rgba(23, 32, 96, 1);
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.statistics-item__label_plus {
+    color: green;
+}
+.statistics-item__label_minus {
+    color: red;
+}
+
