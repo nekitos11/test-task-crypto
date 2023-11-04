@@ -9,7 +9,8 @@ import { useEffect, useState } from 'react';
 import { ITimePickerItem } from './components/TimePicker/TimePicker';
 import { Statistics } from './components/Statistics';
 import { defaultTSymId } from '../Sidebar/components/SidebarItem/SidebarItem';
-import {Chart} from "../Chart";
+import { Chart } from '../Chart';
+import { Exchange } from '../Exchange/Exchange';
 
 const createPairsList = (data, coin) => {
   const mappedData = data?.reduce((acc, el) => {
@@ -46,7 +47,9 @@ export const Main = () => {
     const options = createOptions(pairList);
     if (options) {
       setSelectOptions(options);
-      setCurrentPair(options.find(({ value }) => value === coin?.CoinInfo?.Id + defaultTSymId) || options[0]);
+      setCurrentPair(
+        options.find(({ value }) => value === coin?.CoinInfo?.Id + defaultTSymId) || options[0]
+      );
     }
   }, [data, coin]);
 
@@ -65,6 +68,7 @@ export const Main = () => {
         </div>
         {currentPair && <Statistics pair={currentPair} />}
         <Chart />
+        <Exchange pair={currentPair} />
       </div>
     </div>
   );

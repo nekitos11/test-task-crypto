@@ -1,0 +1,13 @@
+.exchange-field {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+}
+
+.exchange-field__title {
+    color: rgba(100, 95, 95, 1);
+    font-size: 16px;
+    line-height: 24px;
+    text-transform: uppercase;
+    font-weight: 500;
+}

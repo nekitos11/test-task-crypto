@@ -36,25 +36,27 @@ export const Statistics = ({ pair }: StatisticsProps) => {
   }, [pair?.label]);
 
   return (
-    <GradientBlock>
-      <div className="statistics">
-        {currentPairData && (
-          <ul className="statistics__list">
-            {statisticsItems.map(({ title, key }) => {
-              const value = currentPairData[from]?.[to]?.[key];
-              return (
-                <li className="statistics__list-item">
-                  <StatisticsItem
-                    title={title}
-                    label={value}
-                    isPlusDay={key === 'CHANGEPCT24HOUR' ? parseFloat(value) > 0 : undefined}
-                  />
-                </li>
-              );
-            })}
-          </ul>
-        )}
-      </div>
-    </GradientBlock>
+    <div className="statistics-wrapper">
+      <GradientBlock>
+        <div className="statistics">
+          {currentPairData && (
+            <ul className="statistics__list">
+              {statisticsItems.map(({ title, key }) => {
+                const value = currentPairData[from]?.[to]?.[key];
+                return (
+                  <li className="statistics__list-item">
+                    <StatisticsItem
+                      title={title}
+                      label={value}
+                      isPlusDay={key === 'CHANGEPCT24HOUR' ? parseFloat(value) > 0 : undefined}
+                    />
+                  </li>
+                );
+              })}
+            </ul>
+          )}
+        </div>
+      </GradientBlock>
+    </div>
   );
 };

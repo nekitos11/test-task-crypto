@@ -1,0 +1,68 @@
+.exchange-input {
+    height: 70px;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 8px;
+}
+
+.exchange-input__input {
+    padding: 0 12px;
+    height: 70px;
+    padding-left: 55px;
+    width: 100%;
+
+}
+
+.exchange-input__icon {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 20px;
+    left: 32px;
+    /*padding-left: 16px;*/
+    /*padding-top: 9px;*/
+    transition: all 0.3s ease-in-out;
+    z-index: 1;
+}
+
+.exchange-input__sym {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 75px;
+    color: rgba(148, 148, 148, 1);
+    font-size: 16px;
+    line-height: 26px   ;
+}
+
+.exchange-input__actions {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 20px;
+    width: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+}
+
+.exchange-input__actions-divider {
+    width: 100%;
+    height: 1px;
+    background: rgba(148, 148, 148, 1);
+}
+
+.exchange-input__down-arrow {
+    transform: rotate(180deg);
+}
+
+.exchange-input__actions-arrow {
+    width: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 20px;
+    cursor: pointer;
+}

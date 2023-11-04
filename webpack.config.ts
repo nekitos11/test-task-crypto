@@ -7,5 +7,13 @@ module.exports = {
     modules: ['src', 'node_modules'],
     mainFiles: ['index'],
     alias: {},
-  }
+  },
+  module: {
+    rules: [
+      {
+        test: /\.svg$/,
+        use: ['@svgr/webpack'],
+      }
+    ],
+  },
 }

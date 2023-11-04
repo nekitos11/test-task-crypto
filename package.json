@@ -9,6 +9,7 @@
     "@types/react-dom": "^18.2.14",
     "@types/react-query": "^1.2.9",
     "eslint-config-prettier": "8.5.0",
+    "@svgr/webpack": "^6.2.1",
     "eslint-plugin-prettier": "4.2.1",
     "prettier": "2.3.2",
     "react": "^18.2.0",
