@@ -1,12 +1,9 @@
 import './Statistics.css';
-import {useContext, useEffect} from 'react';
-import {CurrentCoinContext} from '../../../../context/CurrentCoin/CurrentCoinContext';
-import {TimePickerItem} from '../TimePicker/TimePickerItem';
+import {useEffect} from 'react';
 import {ITimePickerItem} from '../TimePicker/TimePicker';
 import {useQuery} from 'react-query';
 import {ApiItems} from '../../apiCalls/fetchCurrentCoin/types';
 import {getFetchCurrentPair} from '../../apiCalls/fetchCurrentPair/fetchCurrentPair';
-import get from 'lodash.get';
 import {StatisticsItem} from './StatisticsItem';
 
 interface StatisticsProps {

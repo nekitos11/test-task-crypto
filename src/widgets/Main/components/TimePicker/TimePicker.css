@@ -1,0 +1,4 @@
+.time-picker {
+    box-shadow: 0 4px 15px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+}
