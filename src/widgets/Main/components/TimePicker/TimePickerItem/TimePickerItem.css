@@ -1,0 +1,16 @@
+.timePickerItem {
+    width: 50px;
+    height: 50px;
+    background: #EDEEF2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.timePickerItem_checked {
+    background: white;
+    color: rgba(28, 60, 205, 1);
+    transform: scale(1.2);
+}
+
+
