@@ -1,39 +1,46 @@
 import * as React from 'react';
 import './ExchangeInput.css';
-import Block from 'assets/block.svg';
-import Arrow from 'assets/arrow.svg';
+import Block from '../../../../assets/block.svg';
+import Arrow from '../../../../assets/arrow.svg';
 import { Icon } from '../../../../components/Icon/Icon';
+import { UseFormRegister } from 'react-hook-form';
+import { IFormState } from '../../types';
+
+interface ExchangeInputProps {
+  symbol: string;
+  name: 'price' | 'amount';
+  value: number;
+  onChange: (value: number) => void;
+  register: UseFormRegister<IFormState>;
+  icon?: string;
+  placeholder?: string;
+}
 
 export const ExchangeInput = ({
-  containerStyle = {},
   icon = Block,
-  inputStyle = {},
-  name = '',
+  name,
   onChange = (value: number) => {},
   placeholder = '',
   value = 0,
   symbol = '',
-  wrapperStyle = {},
-}) => {
+  register,
+}: ExchangeInputProps) => {
   const inputRef = React.useRef(null);
-
   const handleClick = () => {
     if (inputRef && inputRef.current) inputRef.current.focus();
   };
 
   return (
-    // <div className={className} style={wrapperStyle}>
-    <div onClick={handleClick} className="exchange-input" style={containerStyle}>
+    <div onClick={handleClick} className="exchange-input">
       {icon ? <Icon icon={icon} className="exchange-input__icon" /> : null}
 
       <input
         className="exchange-input__input"
         ref={inputRef}
-        name={name}
         onChange={(e) => onChange(Number(e.target.value))}
         placeholder={placeholder}
         value={value}
-        style={inputStyle}
+        {...register(name)}
       />
       <div className="exchange-input__sym">{symbol}</div>
       <div className="exchange-input__actions">
@@ -50,7 +57,6 @@ export const ExchangeInput = ({
         />
       </div>
     </div>
-    // </div>
   );
 };
 

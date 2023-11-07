@@ -39,6 +39,7 @@ export const Main = () => {
   const { coin } = useCurrentCoinContext();
   const [currentPair, setCurrentPair] = useState();
   const [selectOptions, setSelectOptions] = useState();
+  const [from, to] = currentPair?.label?.split(' - ') || [];
 
   const { data } = useQuery<ApiItems[]>('mostPopular', fetchMostPopular);
 
@@ -68,7 +69,7 @@ export const Main = () => {
         </div>
         {currentPair && <Statistics pair={currentPair} />}
         <Chart pair={currentPair}/>
-        <Exchange pair={currentPair} />
+        <Exchange from={from} to={to} />
       </div>
     </div>
   );

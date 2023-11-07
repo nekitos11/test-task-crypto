@@ -1,10 +1,13 @@
 .exchange {
     width: 100%;
+    margin-top: auto;
+}
+
+.exchange form {
     padding: 28px 60px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: auto;
 }
 
 .exchange__total-title {
