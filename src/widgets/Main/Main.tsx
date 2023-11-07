@@ -58,6 +58,13 @@ export const Main = () => {
     }
   }, [data, coin]);
 
+  if (!coin) {
+    return (
+      <div className="main">
+        <div className="content-empty">Choose a coins pair to start</div>
+      </div>
+    );
+  }
   return (
     <div className="main">
       <div className="content">

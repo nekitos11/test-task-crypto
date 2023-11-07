@@ -39,7 +39,7 @@ export const ExchangeForm = ({ from = '', to = '', register, control }: Exchange
       />
       <div className="exchange__total">
         <div className="exchange__total-title">total</div>
-        <div className="exchange__total-sum">{dealAmount * dealPrice}</div>
+        <div className="exchange__total-sum">{`${dealAmount * dealPrice} ${from}`}</div>
       </div>
     </>
   );
