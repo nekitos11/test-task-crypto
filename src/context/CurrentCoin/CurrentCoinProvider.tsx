@@ -1,8 +1,13 @@
 import { CurrentCoinContext } from './CurrentCoinContext';
-import { useState } from 'react';
+import { ReactNode, useState } from 'react';
+import {ApiItem} from "./types";
 
-export const CurrentCoinProvider = ({ children }) => {
-  const [coin, setCoin] = useState<string | undefined>();
+interface CurrentCoinProviderProps {
+  children?: ReactNode;
+}
+
+export const CurrentCoinProvider = ({ children }: CurrentCoinProviderProps) => {
+  const [coin, setCoin] = useState<ApiItem | undefined>();
 
   return (
     <CurrentCoinContext.Provider value={{ coin, setCoin }}>{children}</CurrentCoinContext.Provider>

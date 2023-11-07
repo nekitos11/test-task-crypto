@@ -1,8 +1,10 @@
-import {createContext, Dispatch, SetStateAction, useContext} from 'react';
+import { createContext, Dispatch, SetStateAction, useContext } from 'react';
+
+import { ApiItem } from './types';
 
 interface CurrentCoinContextProps {
-  coin?: string;
-  setCoin?: Dispatch<SetStateAction<string>>;
+  coin?: ApiItem;
+  setCoin?: Dispatch<SetStateAction<ApiItem>>;
 }
 
 export const CurrentCoinContext = createContext<CurrentCoinContextProps | null>(null);

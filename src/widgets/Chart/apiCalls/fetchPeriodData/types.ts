@@ -1,9 +1,5 @@
-export interface ApiItems {
-  CoinInfo: {
-    Name: string;
-    Id: string
-  };
-  RAW: {
-    USD: { PRICE: string; VOLUME24HOUR: number; CHANGEPCT24HOUR: number };
-  };
+import { ApiItems } from '../../../Sidebar/apiCalls/fetchMostPopular/types';
+
+export interface ApiResponse {
+  Data: ApiItems[];
 }

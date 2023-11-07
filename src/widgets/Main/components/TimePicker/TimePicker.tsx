@@ -1,39 +1,34 @@
 import './TimePicker.css';
-import { useContext } from 'react';
-import { CurrentCoinContext } from '../../../../context/CurrentCoin/CurrentCoinContext';
 import { TimePickerItem } from './TimePickerItem';
 import './TimePicker.css';
+import { DefaultSelectItem } from '../../../../types';
 
-export type ITimePickerItem = {
-  label: string;
-  value: string;
-};
-const timePickerItems = [
+export const timePickerItems = [
   {
     label: '1d',
-    value: 'histoday?aggregate=1',
+    value: '/histoday?aggregate=1',
   },
   {
     label: '6h',
-    value: 'histohour?aggregate=6',
+    value: '/histohour?aggregate=6',
   },
   {
     label: '1h',
-    value: 'histohour?aggregate=1',
+    value: '/histohour?aggregate=1',
   },
   {
     label: '30m',
-    value: 'histominute?aggregate=30',
+    value: '/histominute?aggregate=30',
   },
   {
     label: '5m',
-    value: 'histominute?aggregate=5',
+    value: '/histominute?aggregate=5',
   },
 ];
 
 interface TimePickerProps {
-  onChange: (item: ITimePickerItem) => void;
-  time?: ITimePickerItem;
+  onChange: (item: DefaultSelectItem) => void;
+  time?: DefaultSelectItem;
 }
 
 export const TimePicker = ({ onChange, time }: TimePickerProps) => {

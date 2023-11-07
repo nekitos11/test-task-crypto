@@ -1,6 +1,4 @@
 import './SidebarItem.css';
-import { useContext } from 'react';
-import { CurrentCoinContext } from '../../../../context/CurrentCoin/CurrentCoinContext';
 
 const defaultTsym = 'USD';
 export const defaultTSymId = '171986'

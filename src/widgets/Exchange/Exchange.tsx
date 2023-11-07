@@ -3,7 +3,7 @@ import { GradientBlock } from '../../components/GradientBlock';
 import './Exchange.css';
 import { useQuery } from 'react-query';
 import { getFetchCurrentPair } from '../Main/apiCalls/fetchCurrentPair/fetchCurrentPair';
-import { ApiItems } from '../Main/apiCalls/fetchCurrentPair/types';
+import { ApiResponse } from '../Main/apiCalls/fetchCurrentPair/types';
 import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { ExchangeForm } from './components/ExchangeForm';
@@ -17,7 +17,7 @@ interface ExchangeProps {
 export const Exchange = ({ from, to }: ExchangeProps) => {
   const { setValue, control, register } = useForm<IFormState>();
 
-  const { data: currentPairData } = useQuery<ApiItems[]>(
+  const { data: currentPairData } = useQuery<ApiResponse>(
       [from, to],
     getFetchCurrentPair(from, to),
   );
@@ -25,7 +25,7 @@ export const Exchange = ({ from, to }: ExchangeProps) => {
   useEffect(() => {
     if (currentPairData) {
       setValue('amount', 1);
-      setValue('price', currentPairData?.RAW?.[from]?.[to]?.PRICE?.toFixed(2));
+      setValue('price', +currentPairData?.RAW?.[from]?.[to]?.PRICE?.toFixed(2));
     }
   }, [currentPairData]);
 

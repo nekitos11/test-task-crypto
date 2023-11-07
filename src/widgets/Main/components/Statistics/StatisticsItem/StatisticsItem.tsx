@@ -3,7 +3,7 @@ import { Loader } from '../../../../../components/Loader';
 
 interface StatisticsItemProps {
   title: string;
-  label: string;
+  value: number;
   isPlusDay?: boolean;
   isLoading?: boolean;
   isPercentField: boolean;
@@ -11,7 +11,7 @@ interface StatisticsItemProps {
 
 export const StatisticsItem = ({
   title,
-  label,
+  value,
   isPlusDay,
   isLoading,
   isPercentField,
@@ -33,9 +33,9 @@ export const StatisticsItem = ({
             <Loader />
           </div>
         ) : isPercentField ? (
-          `${label} %`
+          `${value} %`
         ) : (
-          label
+          value
         )}
       </div>
     </div>

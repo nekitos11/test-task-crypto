@@ -3,7 +3,7 @@ import { ExchangeInput } from '../ExchangeInput';
 import { Control, Controller, UseFormRegister } from 'react-hook-form';
 import { IFormState } from '../../types';
 
-interface SidebarItemsProps {
+interface ExchangeFieldProps {
   title: string;
   symbol: string;
   name: 'price' | 'amount';
@@ -13,7 +13,7 @@ interface SidebarItemsProps {
   control: Control<IFormState>;
 }
 
-export const ExchangeField = ({ title, name, control, ...inputProps }: SidebarItemsProps) => {
+export const ExchangeField = ({ title, name, control, ...inputProps }: ExchangeFieldProps) => {
   return (
     <div className="exchange-field">
       <div className="exchange-field__title">{title}</div>

@@ -1,13 +1,13 @@
 import './Statistics.css';
-import { ITimePickerItem } from '../TimePicker/TimePicker';
 import { useQuery } from 'react-query';
-import { ApiItems } from '../../apiCalls/fetchCurrentCoin/types';
+import {ApiItemFields, ApiResponse} from '../../apiCalls/fetchCurrentPair/types';
 import { getFetchCurrentPair } from '../../apiCalls/fetchCurrentPair/fetchCurrentPair';
 import { StatisticsItem } from './StatisticsItem';
 import { GradientBlock } from '../../../../components/GradientBlock';
+import { DefaultSelectItem } from '../../../../types';
 
 interface StatisticsProps {
-  pair: ITimePickerItem;
+  pair: DefaultSelectItem;
 }
 
 const statisticsItems = [
@@ -26,10 +26,10 @@ const statisticsItems = [
 ];
 export const Statistics = ({ pair }: StatisticsProps) => {
   const [from, to] = pair?.label?.split(' - ') || [];
-  const {
-    data: currentPairData,
-    isLoading,
-  } = useQuery<ApiItems[]>(['currentPair', pair.label], getFetchCurrentPair(from, to));
+  const { data: currentPairData, isLoading } = useQuery<ApiResponse>(
+    ['currentPair', pair.label],
+    getFetchCurrentPair(from, to)
+  );
 
   return (
     <div className="statistics-wrapper">
@@ -38,15 +38,15 @@ export const Statistics = ({ pair }: StatisticsProps) => {
           {
             <ul className="statistics__list">
               {statisticsItems.map(({ title, key }) => {
-                const value = currentPairData?.DISPLAY?.[from]?.[to]?.[key];
+                const value = currentPairData?.DISPLAY?.[from]?.[to]?.[key as ApiItemFields];
                 return (
                   <li className="statistics__list-item">
                     <StatisticsItem
                       isLoading={isLoading}
                       title={title}
-                      label={value}
+                      value={value}
                       isPercentField={key === 'CHANGEPCT24HOUR'}
-                      isPlusDay={key === 'CHANGEPCT24HOUR' ? parseFloat(value) > 0 : undefined}
+                      isPlusDay={key === 'CHANGEPCT24HOUR' ? parseFloat(String(value)) > 0 : undefined}
                     />
                   </li>
                 );

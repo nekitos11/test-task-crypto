@@ -1,18 +1,19 @@
 import { useCurrentCoinContext } from '../../context/CurrentCoin/CurrentCoinContext';
 import './Main.css';
 import { useQuery } from 'react-query';
-import { ApiItems } from '../Sidebar/apiCalls/fetchMostPopular/types';
 import { fetchMostPopular } from '../Sidebar/apiCalls/fetchMostPopular/fetchMostPopular';
 import Select from 'react-select';
 import { TimePicker } from './components/TimePicker';
 import { useEffect, useState } from 'react';
-import { ITimePickerItem } from './components/TimePicker/TimePicker';
+import { timePickerItems } from './components/TimePicker/TimePicker';
 import { Statistics } from './components/Statistics';
 import { defaultTSymId } from '../Sidebar/components/SidebarItem/SidebarItem';
 import { Chart } from '../Chart';
 import { Exchange } from '../Exchange';
+import { DefaultSelectItem } from '../../types';
+import { ApiItem } from '../../context/CurrentCoin/types';
 
-const createPairsList = (data, coin) => {
+const createPairsList = (data: ApiItem[], coin?: ApiItem) => {
   const mappedData = data?.reduce((acc, el) => {
     if (el?.CoinInfo?.Id !== coin?.CoinInfo?.Id)
       acc.push(
@@ -30,18 +31,20 @@ const createPairsList = (data, coin) => {
   return mappedData;
 };
 
-const createOptions = (pairs) =>
+const createOptions = (pairs: { first: ApiItem; second: ApiItem }[]) =>
   pairs?.map(({ first, second }) => ({
     value: first?.CoinInfo?.Id + second?.CoinInfo?.Id,
     label: first?.CoinInfo?.Name + ' - ' + second?.CoinInfo?.Name,
   }));
+
 export const Main = () => {
   const { coin } = useCurrentCoinContext();
-  const [currentPair, setCurrentPair] = useState();
-  const [selectOptions, setSelectOptions] = useState();
-  const [from, to] = currentPair?.label?.split(' - ') || [];
+  const [currentPair, setCurrentPair] = useState<DefaultSelectItem | undefined>();
+  const [selectOptions, setSelectOptions] = useState<DefaultSelectItem[]>();
+  const [from, to] = currentPair?.label?.split(' - ') ?? [];
+  const [time, setTime] = useState<DefaultSelectItem | undefined>();
 
-  const { data } = useQuery<ApiItems[]>('mostPopular', fetchMostPopular);
+  const { data } = useQuery<ApiItem[]>('mostPopular', fetchMostPopular);
 
   useEffect(() => {
     const pairList = createPairsList(data, coin);
@@ -51,10 +54,9 @@ export const Main = () => {
       setCurrentPair(
         options.find(({ value }) => value === coin?.CoinInfo?.Id + defaultTSymId) || options[0]
       );
+      setTime(timePickerItems[0]);
     }
   }, [data, coin]);
-
-  const [time, setTime] = useState<ITimePickerItem | undefined>();
 
   return (
     <div className="main">
@@ -68,7 +70,7 @@ export const Main = () => {
           </div>
         </div>
         {currentPair && <Statistics pair={currentPair} />}
-        <Chart pair={currentPair}/>
+        <Chart from={from} to={to} time={time} />
         <Exchange from={from} to={to} />
       </div>
     </div>
