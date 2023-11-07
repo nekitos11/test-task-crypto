@@ -1,4 +1,21 @@
-.chart {
-    height: 400px;
-    width: 100%;
+.chart__loader {
+    width: 600px;
+    height: 270px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.chart__wrapper{
+    margin-top: 40px;
+    margin-left: 180px;
+    margin-right: 180px;
+
+}
+.chart__wrapper > div > div {
+    width: 100% !important;
+
+}
+.chart__wrapper .react-resizable {
+    width: 100% !important;
 }

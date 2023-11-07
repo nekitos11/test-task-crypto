@@ -10,7 +10,7 @@ import { ITimePickerItem } from './components/TimePicker/TimePicker';
 import { Statistics } from './components/Statistics';
 import { defaultTSymId } from '../Sidebar/components/SidebarItem/SidebarItem';
 import { Chart } from '../Chart';
-import { Exchange } from '../Exchange/Exchange';
+import { Exchange } from '../Exchange';
 
 const createPairsList = (data, coin) => {
   const mappedData = data?.reduce((acc, el) => {
@@ -67,7 +67,7 @@ export const Main = () => {
           </div>
         </div>
         {currentPair && <Statistics pair={currentPair} />}
-        <Chart />
+        <Chart pair={currentPair}/>
         <Exchange pair={currentPair} />
       </div>
     </div>
