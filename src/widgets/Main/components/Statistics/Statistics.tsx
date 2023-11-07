@@ -45,6 +45,7 @@ export const Statistics = ({ pair }: StatisticsProps) => {
                       isLoading={isLoading}
                       title={title}
                       label={value}
+                      isPercentField={key === 'CHANGEPCT24HOUR'}
                       isPlusDay={key === 'CHANGEPCT24HOUR' ? parseFloat(value) > 0 : undefined}
                     />
                   </li>

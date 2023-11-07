@@ -1,5 +1,18 @@
 .sidebarItems {
     margin-top: 50px;
     z-index: 100;
-    overflow: scroll;
+    overflow-y: scroll;
+}
+
+.sidebarItems::-webkit-scrollbar {
+    width: 20px;
+}
+
+.sidebarItems::-webkit-scrollbar-track {
+    background: #444C7D;
+
+}
+.sidebarItems::-webkit-scrollbar-thumb {
+    background: #2a3472;
+
 }

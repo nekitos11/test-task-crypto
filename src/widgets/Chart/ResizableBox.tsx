@@ -12,7 +12,7 @@ export function ResizableBox({
   className = '',
 }) {
   return (
-    <div style={{ marginLeft: 20 }}>
+    <div>
       <div
         style={{
           display: 'inline-block',
@@ -20,7 +20,6 @@ export function ResizableBox({
           background: 'white',
           padding: '.5rem',
           borderRadius: '0.5rem',
-          boxShadow: '0 30px 40px rgba(0,0,0,.1)',
           ...style,
         }}
       >
