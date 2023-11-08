@@ -1,0 +1,6 @@
+{
+  "filetypes": [".js",".ts",".tsx", ".html", ".css", ".svg"],
+  "directory": "/build",
+  "algorithms": ["br", "gz"],
+  "retainUncompressedFiles": false
+}
