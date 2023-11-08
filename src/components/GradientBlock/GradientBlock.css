@@ -1,4 +1,4 @@
 .gradient-block {
-    background-image: linear-gradient(to right, rgba(207, 210, 217, 0.3), rgba(219, 221, 226, 0.3), rgba(232, 232, 236, 0.2), #f3f3f5, #ffffff);
+    background-image: linear-gradient(to right, rgba(207, 210, 217, 0.3), rgba(219, 221, 226, 0.3), rgba(232, 232, 236, 0.2), rgba(243, 243, 245, 0.2), #ffffff);
     width: max-content;
 }

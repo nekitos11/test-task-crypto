@@ -7,10 +7,10 @@
 }
 
 .chart__wrapper{
-    margin-top: 40px;
+    margin-top: 20px;
     margin-left: 180px;
     margin-right: 180px;
-
+    height: 100%;
 }
 
 .chart__wrapper .react-resizable {

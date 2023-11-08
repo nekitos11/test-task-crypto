@@ -3,7 +3,7 @@ export interface ApiItem {
     Name: string;
     Id: string;
   };
-  RAW: {
+  RAW?: {
     USD: { PRICE: string; VOLUME24HOUR: number; CHANGEPCT24HOUR: number };
   };
 }

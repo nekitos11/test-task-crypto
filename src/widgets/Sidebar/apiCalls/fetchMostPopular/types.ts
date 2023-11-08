@@ -1,4 +1,4 @@
-export interface ApiItems {
+export interface ApiItem {
   CoinInfo: {
     Name: string;
     Id: string

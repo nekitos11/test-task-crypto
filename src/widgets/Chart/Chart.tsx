@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 import { AxisOptions, Chart as CoreChart } from 'react-charts';
-import { ResizableBox } from './ResizableBox';
+import { ChartBox } from './ChartBox';
 import { useQuery } from 'react-query';
 import { ApiResponse } from './apiCalls/fetchPeriodData/types';
 import { getFetchedPeriodData } from './apiCalls/fetchPeriodData/fetchPeriodData';
@@ -79,7 +79,7 @@ export const Chart = ({ from, to, time }: ChartProps) => {
   return (
     <div className="chart__wrapper">
       {fetchedData?.Data?.length ? (
-        <ResizableBox>
+        <ChartBox>
           <CoreChart
             options={{
               data,
@@ -106,7 +106,7 @@ export const Chart = ({ from, to, time }: ChartProps) => {
               ),
             }}
           />
-        </ResizableBox>
+        </ChartBox>
       ) : (
         <div className="chart__loader">
           <Loader />

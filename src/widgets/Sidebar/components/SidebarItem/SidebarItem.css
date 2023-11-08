@@ -20,3 +20,8 @@
     background-color: #fff;
     color: #141D53
 }
+
+.sidebarItem__chart {
+    height: 30px;
+    width: 100px;
+}

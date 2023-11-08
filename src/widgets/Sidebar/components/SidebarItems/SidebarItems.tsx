@@ -1,26 +1,25 @@
 import { SidebarItem } from '../SidebarItem';
 import './SidebarItems.css';
-import { useState } from 'react';
-import { ApiItems } from '../../apiCalls/fetchMostPopular/types';
+import { useCallback, useState } from 'react';
+import { ApiItem } from '../../apiCalls/fetchMostPopular/types';
 import { useCurrentCoinContext } from '../../../../context/CurrentCoin/CurrentCoinContext';
 
 interface SidebarItemsProps {
-  items: ApiItems[];
+  items: ApiItem[];
 }
 
 export const SidebarItems = ({ items }: SidebarItemsProps) => {
-  const [checkedItem, setCheckedItem] = useState<number | undefined>();
-  const { setCoin } = useCurrentCoinContext();
+  const { setCoin, coin } = useCurrentCoinContext();
+
+  const onItemClick = useCallback((el: ApiItem) => () => setCoin(el), [setCoin]);
 
   return (
     <div className="sidebarItems">
-      {items?.map((el, idx) => (
+      {items?.map((el) => (
         <SidebarItem
-          isItemChecked={checkedItem === idx}
-          onClick={() => {
-            setCoin(el);
-            setCheckedItem(idx);
-          }}
+          isPlusDay={parseFloat(String(el?.RAW?.USD?.CHANGEPCT24HOUR)) > 0}
+          isItemChecked={coin?.CoinInfo?.Id === el?.CoinInfo?.Id}
+          onClick={onItemClick(el)}
           el={el}
         />
       ))}

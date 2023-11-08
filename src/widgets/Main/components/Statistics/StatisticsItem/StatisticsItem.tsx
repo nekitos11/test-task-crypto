@@ -33,7 +33,7 @@ export const StatisticsItem = ({
             <Loader />
           </div>
         ) : isPercentField ? (
-          `${value} %`
+          `${value}%`
         ) : (
           value
         )}
